@@ -16,6 +16,7 @@ public class GameHost {
     private GameHost() {
     }
 
+    //ToDo check
     public void run() throws InterruptedException{
         while (!gameover) {
             for (Player player : players) {
@@ -33,16 +34,17 @@ public class GameHost {
                         player.addToPosition(DiceService.getDicesValue());
                     }
 
-                } while (!player.isInJail() && DiceService.isDoublets());
+                } while (!player.isInJail() && !player.isBankrupt() && DiceService.isDoublets());
                 player.investFunds();
                 player.notifyObservers();
-                Thread.sleep(10);
+                Thread.sleep(500);
             }
 
             long count = Arrays.stream(players).filter(Player::isBankrupt)
                     .count();
             if (count >= players.length - 1) {
                 gameover = true;
+                break;
             }
 
         }

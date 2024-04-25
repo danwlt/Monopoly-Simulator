@@ -57,6 +57,7 @@ public abstract class Field {
             Bank.playerAdvancedGo();
         }
         GameHost.getCurrentPlayer().setPosition(position);
+        GameHost.getCurrentPlayer().notifyObservers();
         executeAction();
     }
 

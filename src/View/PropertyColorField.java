@@ -17,6 +17,7 @@ public class PropertyColorField extends JPanel {
     }
 
     // Draw houses
+    // ToDo rewrite calculations
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -77,18 +78,6 @@ public class PropertyColorField extends JPanel {
                  }
             }
         }
-        /*
-        else if (amountHouses == 5) {
-            int x = (panelWidth - HOUSE_WIDTH) / 2;
-            int y = (panelHeight - HOUSE_HEIGHT) / 2 + 2;
-            g.setColor(Color.RED);
-            g.fillRect(x, y, HOUSE_WIDTH, HOUSE_HEIGHT);
-            int[] xPoints = {x + HOUSE_WIDTH / 2, x - 3, x + HOUSE_WIDTH + 3};
-            int[] yPoints = {y - HOUSE_HEIGHT / 2, y, y};
-            g.fillPolygon(xPoints, yPoints, 3);
-        }
-
-         */
         else if (amountHouses == 5){
             int x;
             int y;
@@ -104,7 +93,7 @@ public class PropertyColorField extends JPanel {
                 g.fillRect(x, y, HOUSE_WIDTH, HOUSE_HEIGHT);
                 g.fillPolygon(xPoints, yPoints, 3);
             } else if (fieldRotation.equals(FieldRotation.DOWN)) {
-                x = startX - (amountHouses * 2) * HOUSE_WIDTH;
+                x = (panelWidth - HOUSE_WIDTH) / 2;
                 y = (panelHeight - HOUSE_HEIGHT) / 2 - 2;
                 xPoints = new int[]{x + HOUSE_WIDTH / 2, x - 3, x + HOUSE_WIDTH + 3};
                 yPoints = new int[]{y + (2 * (HOUSE_HEIGHT - 2)), y + HOUSE_HEIGHT, y + HOUSE_HEIGHT};
@@ -120,7 +109,7 @@ public class PropertyColorField extends JPanel {
                 g.fillPolygon(xPoints, yPoints, 3);
             }
             else {
-                x = startX - (amountHouses * 2) * HOUSE_WIDTH;
+                x = (panelWidth - HOUSE_WIDTH) / 2;
                 y = (panelHeight - HOUSE_HEIGHT) / 2 + 2;
                 xPoints = new int[]{x + HOUSE_WIDTH / 2, x - 3, x + HOUSE_WIDTH + 3};
                 yPoints = new int[]{y - HOUSE_HEIGHT / 2, y, y};
@@ -143,8 +132,8 @@ public class PropertyColorField extends JPanel {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        PropertyColorField greenHousesPanel = new PropertyColorField(Color.BLUE, 4, FieldRotation.TOP);
-        greenHousesPanel.setRotation(FieldRotation.TOP);
+        PropertyColorField greenHousesPanel = new PropertyColorField(Color.BLUE, 5, FieldRotation.TOP);
+        greenHousesPanel.setRotation(FieldRotation.DOWN);
         frame.add(greenHousesPanel);
 
         frame.setVisible(true);

@@ -63,7 +63,6 @@ public class Player {
         }
         Field fieldToLandOn = PropertyManager.getFieldAtPosition(this.position + diceValue);
         fieldToLandOn.goToField(true);
-        notifyObservers();
     }
 
     public int getBalance() {
@@ -105,6 +104,7 @@ public class Player {
     //ToDo try to buy every property he can
     //ToDo try to buy houses
     //ToDo try to pay of mortgage
+    //ToDo add recursion
     public void investFunds(){
         Field currentField = PropertyManager.getFieldAtPosition(GameHost.getCurrentPlayer().getPosition());
         if (currentField instanceof TradeableField){

@@ -1,8 +1,11 @@
 package Model.Fields.ChanceFields.ChanceCards;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChanceCardService {
+    private static final Logger logger = Logger.getLogger(ChanceCardService.class.getName());
     private final static ChanceCardService instance = new ChanceCardService();
 
     private final static Random random = new Random();
@@ -29,10 +32,10 @@ public class ChanceCardService {
         };
     }
 
-    public ChanceCard drawChanceCard(){
+    public void drawChanceCard(){
         ChanceCard card = chanceCards[random.nextInt(chanceCards.length)];
+        logger.log(Level.INFO, card.getText());
         card.executeCard();
-        return card;
     }
 
     public static ChanceCardService getInstance() {

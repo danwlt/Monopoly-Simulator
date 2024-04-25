@@ -126,7 +126,7 @@ public class PropertyManager {
     public static boolean doesUserOwnGroup(TradeableField field){
         logger.log(Level.FINER, String.format("Checking if current Player %s does own every property of colorgroup %s", GameHost.getCurrentPlayer().getName(), field.getColorGroup()));
         boolean result = getColorGroup(field).stream().allMatch(entry -> entry.getOwner() != null && entry.getOwner().equals(field.getOwner()));
-        logger.log(Level.INFO, String.format("%s owns colorgroup: %s", GameHost.getCurrentPlayer().getName(), result));
+        logger.log(Level.FINE, String.format("%s owns colorgroup: %s", GameHost.getCurrentPlayer().getName(), result));
         return result;
     }
 
@@ -137,7 +137,7 @@ public class PropertyManager {
             boolean result = getColorGroup(propertyField)
                     .stream()
                     .allMatch(field -> ((Property_Field) field).getAmountHouses() >= propertyField.getAmountHouses());
-            logger.log(Level.INFO, String.format("Is %s allowed to buy house: %s", GameHost.getCurrentPlayer().getName(), result));
+            logger.log(Level.FINE, String.format("Is %s allowed to buy house: %s", GameHost.getCurrentPlayer().getName(), result));
             return result;
         }
         else{
@@ -152,7 +152,7 @@ public class PropertyManager {
                 .filter(entry -> entry.getColorGroup().equals(field.getColorGroup()))
                 .collect(Collectors.toList());
 
-        logger.log(Level.INFO, String.format("Properties of colorgroup %s are %s", field.getColorGroup(), colorGroup));
+        logger.log(Level.FINE, String.format("Properties of colorgroup %s are %s", field.getColorGroup(), colorGroup));
 
         return colorGroup;
     }

@@ -9,7 +9,7 @@ public class MonopolyView extends JFrame{
 
     public MonopolyView(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(1500, 900));
+        setPreferredSize(new Dimension(1500, 930));
         setLayout(new BorderLayout());
 
         //ToDo add ActivityContainer that show statistics
